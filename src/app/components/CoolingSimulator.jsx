@@ -58,7 +58,6 @@ const CoolingSimulator = () => {
       <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-6 text-blue-400 py-10 text-center">
         Simulasi Pendinginan CPU Smartphone
       </h1>
-
       <div className="flex flex-col md:flex-row w-full max-w-4xl gap-8 mb-8 items-center justify-center bg-gray-800 p-6 rounded-2xl border border-gray-700 shadow-xl">
         <div
           className="w-32 h-64 rounded-2xl border-4 border-gray-600 transition-colors duration-200 flex flex-col items-center justify-center shrink-0 shadow-lg"
@@ -71,14 +70,10 @@ const CoolingSimulator = () => {
             t = {time.toFixed(1)}s
           </span>
         </div>
-
-        {/* 3. Area Grafik Recharts */}
         <div className="w-full" style={{ minHeight: "300px" }}>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-
-              {/* 2. Ubah XAxis menjadi tipe Number dan atur batasnya */}
               <XAxis
                 dataKey="waktu"
                 type="number"
@@ -86,7 +81,6 @@ const CoolingSimulator = () => {
                 stroke="#9CA3AF"
               />
               <YAxis domain={[0, 100]} stroke="#9CA3AF" />
-
               <Tooltip
                 contentStyle={{
                   backgroundColor: "#1F2937",
@@ -94,7 +88,6 @@ const CoolingSimulator = () => {
                   color: "#fff",
                 }}
               />
-
               <ReferenceLine
                 y={ambientTemp}
                 stroke="#10B981"
@@ -105,7 +98,6 @@ const CoolingSimulator = () => {
                   position: "insideTopRight",
                 }}
               />
-
               <Line
                 type="monotone"
                 dataKey="suhu"
@@ -114,8 +106,6 @@ const CoolingSimulator = () => {
                 dot={false}
                 isAnimationActive={false}
               />
-
-              {/* 3. Gunakan ReferenceDot untuk titik merah yang bergerak */}
               <ReferenceDot
                 x={time}
                 y={currentTemp}
@@ -129,7 +119,6 @@ const CoolingSimulator = () => {
           </ResponsiveContainer>
         </div>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl bg-gray-800 p-6 rounded-xl border border-gray-700">
         <div>
           <label className="block text-sm mb-2 text-gray-300 font-semibold">
@@ -174,12 +163,7 @@ const CoolingSimulator = () => {
           />
         </div>
       </div>
-
       <div className="mt-8 text-gray-400 text-sm text-center w-full max-w-4xl">
-        <p>
-          Logika: Semakin besar selisih suhu, semakin cepat warna dan grafik
-          menurun.
-        </p>
         <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700 inline-block">
           <p className="font-mono text-blue-300">
             T({time.toFixed(1)}) = {ambientTemp} + ({initialTemp} -{" "}
