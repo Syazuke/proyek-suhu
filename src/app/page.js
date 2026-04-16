@@ -1,10 +1,9 @@
-import React from "react";
-import CoolingSimulator from "./components/CoolingSimulator";
+import Home from "./components/HomePaage/page";
 
 const page = () => {
   return (
     <div>
-      <CoolingSimulator />
+      <Home />
     </div>
   );
 };
