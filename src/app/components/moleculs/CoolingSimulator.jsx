@@ -1,5 +1,7 @@
 "use client";
 
+import hp from "@/app/assets/hp.png";
+import Image from "next/image";
 import React, { useState, useEffect, useMemo } from "react";
 // 1. Tambahkan ReferenceDot di dalam import
 import {
@@ -47,122 +49,131 @@ const CoolingSimulator = () => {
   }, [initialTemp, ambientTemp, k]);
 
   return (
-    <div className="bg-red-200 text-white min-h-screen flex flex-col items-center">
+    <div className="text-white min-h-screen flex flex-col items-center px-4">
       <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-6 text-blue-400 py-10 text-center">
         Simulasi Pendinginan CPU Smartphone
       </h1>
-      <div className="bg-zinc-600">
-        <div className="flex flex-col md:flex-row w-full max-w-4xl gap-8 mb-8 items-center justify-center p-6 rounded-2xl border border-gray-700 shadow-xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <div>
-              <label className="block text-sm mb-2 text-gray-300 font-semibold">
-                Suhu Awal (T0):{" "}
-                <span className="text-blue-400">{initialTemp}°C</span>
-              </label>
-              <input
-                type="range"
-                min="30"
-                max="100"
-                value={initialTemp}
-                onChange={(e) => setInitialTemp(Number(e.target.value))}
-                className="w-full cursor-pointer accent-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm mb-2 text-gray-300 font-semibold">
-                Suhu Ruangan:{" "}
-                <span className="text-green-400">{ambientTemp}°C</span>
-              </label>
-              <input
-                type="range"
-                min="15"
-                max="35"
-                value={ambientTemp}
-                onChange={(e) => setAmbientTemp(Number(e.target.value))}
-                className="w-full cursor-pointer accent-green-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm mb-2 text-gray-300 font-semibold">
-                Konstanta (k): <span className="text-purple-400">{k}</span>
-              </label>
-              <input
-                type="range"
-                min="0.01"
-                max="0.2"
-                step="0.01"
-                value={k}
-                onChange={(e) => setK(Number(e.target.value))}
-                className="w-full cursor-pointer accent-purple-500"
-              />
-            </div>
-          </div>
+      <div className="w-full flex">
+        <div className="flex flex-col">
           {/* bagian grafik  */}
-          <div className="w-full" style={{ minHeight: "300px" }}>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis
-                  dataKey="waktu"
-                  type="number"
-                  domain={[0, 100]}
-                  stroke="#9CA3AF"
+          <div
+            className="w-full flex flex-col gap-4"
+            style={{ minHeight: "300px" }}
+          >
+            <div className="rounded-xl bg-primary">
+              <h1 className="p-4 text-center">
+                GRAFIK PERUBAHAN SUHU PERANGKAT
+              </h1>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis
+                    dataKey="waktu"
+                    type="number"
+                    domain={[0, 100]}
+                    stroke="#9CA3AF"
+                  />
+                  <YAxis domain={[0, 100]} stroke="#9CA3AF" />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#1F2937",
+                      borderColor: "#374151",
+                      color: "#fff",
+                    }}
+                  />
+                  <ReferenceLine
+                    y={ambientTemp}
+                    stroke="#10B981"
+                    strokeDasharray="3 3"
+                    label={{
+                      value: "Suhu Ruangan",
+                      fill: "#10B981",
+                      position: "insideTopRight",
+                    }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="suhu"
+                    stroke="#3B82F6"
+                    strokeWidth={3}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                  <ReferenceDot
+                    x={time}
+                    y={currentTemp}
+                    r={7}
+                    fill="#EF4444"
+                    stroke="#FFFFFF"
+                    strokeWidth={2}
+                    isFront={true}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="flex flex-col w-full bg-gray-800 p-6 gap-10 rounded-xl border border-gray-700">
+              <div className="w-full">
+                <div className="flex justify-between items-center">
+                  <label className="text-sm">Suhu Awal (T0): </label>
+                  <span className="font-semibold">{initialTemp}°C</span>
+                </div>
+                <input
+                  type="range"
+                  min="30"
+                  max="100"
+                  value={initialTemp}
+                  onChange={(e) => setInitialTemp(Number(e.target.value))}
+                  className="w-full cursor-pointer accent-blue-500"
                 />
-                <YAxis domain={[0, 100]} stroke="#9CA3AF" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#1F2937",
-                    borderColor: "#374151",
-                    color: "#fff",
-                  }}
+              </div>
+              <div>
+                <label className="block text-sm mb-2 text-gray-300 font-semibold">
+                  Suhu Ruangan:{" "}
+                  <span className="text-green-400">{ambientTemp}°C</span>
+                </label>
+                <input
+                  type="range"
+                  min="15"
+                  max="35"
+                  value={ambientTemp}
+                  onChange={(e) => setAmbientTemp(Number(e.target.value))}
+                  className="w-full cursor-pointer accent-green-500"
                 />
-                <ReferenceLine
-                  y={ambientTemp}
-                  stroke="#10B981"
-                  strokeDasharray="3 3"
-                  label={{
-                    value: "Suhu Ruangan",
-                    fill: "#10B981",
-                    position: "insideTopRight",
-                  }}
+              </div>
+              <div>
+                <label className="block text-sm mb-2 text-gray-300 font-semibold">
+                  Konstanta (k): <span className="text-purple-400">{k}</span>
+                </label>
+                <input
+                  type="range"
+                  min="0.01"
+                  max="0.2"
+                  step="0.01"
+                  value={k}
+                  onChange={(e) => setK(Number(e.target.value))}
+                  className="w-full cursor-pointer accent-purple-500"
                 />
-                <Line
-                  type="monotone"
-                  dataKey="suhu"
-                  stroke="#3B82F6"
-                  strokeWidth={3}
-                  dot={false}
-                  isAnimationActive={false}
-                />
-                <ReferenceDot
-                  x={time}
-                  y={currentTemp}
-                  r={7}
-                  fill="#EF4444"
-                  stroke="#FFFFFF"
-                  strokeWidth={2}
-                  isFront={true}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+              </div>
+            </div>
           </div>
-          <div className="font-mono font-bold text-2xl bg-amber-200">
-            {currentTemp.toFixed(1)}°C
-          </div>
-          <div className="text-xs mt-2 opacity-80 font-mono">
-            t = {time.toFixed(1)}s
-          </div>
-        </div>
-
-        <div className="mt-8 text-gray-400 text-sm text-center w-full max-w-4xl">
-          <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700 inline-block">
-            <p className="font-mono text-blue-300">
-              T({time.toFixed(1)}) = {ambientTemp} + ({initialTemp} -{" "}
-              {ambientTemp}) * e^
-              <sup className="text-xs">
-                (-{k} * {time.toFixed(1)})
-              </sup>
-            </p>
+          <div className="flex justify-center items-center">
+            <div className="font-mono font-bold text-2xl bg-amber-200">
+              {currentTemp.toFixed(1)}°C
+            </div>
+            <div className="text-xs mt-2 opacity-80 font-mono">
+              t = {time.toFixed(1)}s
+            </div>
+            <div className="text-gray-400 text-sm text-center w-full">
+              <div className=" bg-gray-800 rounded-lg border border-gray-700 inline-block">
+                <p className="font-mono text-blue-300">
+                  T({time.toFixed(1)}) = {ambientTemp} + ({initialTemp} -{" "}
+                  {ambientTemp}) * e^
+                  <sup className="text-xs">
+                    (-{k} * {time.toFixed(1)})
+                  </sup>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

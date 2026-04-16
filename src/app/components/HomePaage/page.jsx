@@ -1,12 +1,19 @@
-import CoolingSimulator from "../moleculs/CoolingSimulator";
-import Navigation from "../moleculs/Navbar";
+"use client";
 
-const Home = () => {
+import dynamic from "next/dynamic";
+
+const CoolingSimulators = dynamic(
+  () => import("@/app/components/moleculs/CoolingSimulator"),
+  {
+    ssr: false,
+    loading: () => <p>Memuat Simulator...</p>, // Opsional: tampilan saat loading
+  },
+);
+
+export default function Home() {
   return (
-    <div>
-      <CoolingSimulator />
-    </div>
+    <main>
+      <CoolingSimulators />
+    </main>
   );
-};
-
-export default Home;
+}
