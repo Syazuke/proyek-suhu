@@ -18,14 +18,8 @@ const Navigation = () => {
             <a href="/beranda" className="py-4 hover:text-hover">
               Beranda
             </a>
-            <a href="#kalkulator" className="py-4 mb-6 hover:text-hover">
-              Kalkulator
-            </a>
-            <a href="#bayar" className="py-4 mb-6 hover:text-hover">
-              Bayar Zakat
-            </a>
-            <a href="/login" className="py-4 mb-6 hover:text-hover">
-              Login Admin
+            <a href="/ceksuhu" className="py-4 mb-6 hover:text-hover">
+              Cek Suhu
             </a>
           </div>
           <button
@@ -39,20 +33,17 @@ const Navigation = () => {
           <div
             className={`absolute top-full left-0 w-full bg-white flex flex-col py-6 px-4 shadow-lg z-50 ${isOpen ? "border-b border-(--divider)" : ""}`}
           >
+            <a href="/" className="py-4 hover:text-hover">
+              Home
+            </a>
             <a href="#beranda" className="py-4 hover:text-hover">
               Beranda
             </a>
             <a href="#about" className="py-4 hover:text-hover">
               Tentang
             </a>
-            <a href="#kalkulator" className="py-4 hover:text-hover">
-              Kalkulator
-            </a>
-            <a href="#bayar" className="py-4 hover:text-hover">
-              Bayar Zakat
-            </a>
-            <a href="/login" className="py-4 hover:text-hover">
-              Login Admin
+            <a href="/ceksuhu" className="py-4 hover:text-hover">
+              Cek Suhu
             </a>
           </div>
         )}

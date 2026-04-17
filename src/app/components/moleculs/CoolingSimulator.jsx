@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
   Line,
   LineChart,
@@ -130,15 +132,25 @@ const CoolingSimulator = () => {
         <div className="w-full">
           {/* Bagian Grafik */}
           <div
-            className="w-full flex flex-col-reverse gap-2 rounded-xl bg-gray-800 border-gray-700 border"
+            className="w-full flex flex-col gap-2 rounded-xl bg-gray-800 border-gray-700 border"
             style={{ minHeight: "300px" }}
           >
-            <h1 className="p-4 text-center">GRAFIK PERUBAHAN SUHU PERANGKAT</h1>
+            <h1 className="p-4 text-center md:text-2xl">
+              GRAFIK PERUBAHAN SUHU PERANGKAT
+            </h1>
             <ResponsiveContainer width="100%" height={250}>
-              <LineChart
+              <AreaChart
                 data={chartData}
                 margin={{ left: 5, bottom: 30, right: 10 }}
               >
+                <defs>
+                  <linearGradient id="colorSuhu" x1="0" y1="0" x2="0" y2="1">
+                    {/* Warna atas (Pekat) */}
+                    <stop offset="5%" stopColor="#f27a3a" stopOpacity={0.8} />
+                    {/* Warna bawah (Transparan) */}
+                    <stop offset="95%" stopColor="#f27a3a" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis
                   dataKey="waktu"
@@ -171,13 +183,14 @@ const CoolingSimulator = () => {
                     color: "#fff",
                   }}
                 />
-                <Line
+                <Area
                   type="monotone"
                   dataKey="suhu"
                   stroke="#f27a3a"
                   strokeWidth={3}
                   dot={false}
                   isAnimationActive={false}
+                  fill="url(#colorSuhu)"
                 />
                 <ReferenceDot
                   x={waktu}
@@ -188,7 +201,7 @@ const CoolingSimulator = () => {
                   strokeWidth={2}
                   isFront={true}
                 />
-              </LineChart>
+              </AreaChart>
             </ResponsiveContainer>
           </div>
 
