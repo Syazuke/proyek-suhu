@@ -1,9 +1,9 @@
-import Home from "./components/HomePaage/page";
+"use client";
 
 const page = () => {
   return (
     <div>
-      <Home />
+      <h1>ini home page</h1>
     </div>
   );
 };

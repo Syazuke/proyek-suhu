@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import dynamic from "next/dynamic";
 
 const CoolingSimulators = dynamic(
@@ -10,10 +11,12 @@ const CoolingSimulators = dynamic(
   },
 );
 
-export default function Home() {
+const page = () => {
   return (
-    <main>
+    <div>
       <CoolingSimulators />
-    </main>
+    </div>
   );
-}
+};
+
+export default page;

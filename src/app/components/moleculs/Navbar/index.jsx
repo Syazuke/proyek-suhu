@@ -30,7 +30,7 @@ const Navigation = () => {
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-2xl focus:outline-none md:hidden inline"
+            className="text-2xl focus:outline-none md:hidden inline cursor-pointer"
           >
             <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"}`}></i>
           </button>

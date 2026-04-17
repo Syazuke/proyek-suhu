@@ -29,13 +29,13 @@ const CoolingSimulator = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setWaktu((prevTime) => {
-        const currentSuhu =
-          suhuRuangan + (suhuAwal - suhuRuangan) * Math.exp(-k * prevTime);
-        if (currentSuhu - suhuRuangan <= 0.1 || prevTime >= 100) {
-          return prevTime;
+      setWaktu((waktu) => {
+        const Suhu =
+          suhuRuangan + (suhuAwal - suhuRuangan) * Math.exp(-k * waktu);
+        if (Suhu - suhuRuangan <= 0.1 || waktu >= 100) {
+          return waktu;
         }
-        return prevTime + 0.5;
+        return waktu + 0.5;
       });
     }, 50);
 
