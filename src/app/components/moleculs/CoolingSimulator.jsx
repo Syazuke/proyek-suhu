@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Line,
-  LineChart,
-  ReferenceDot,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import Video from "../atoms/video";
+import Visual from "../atoms/visual";
+import Grafik from "../atoms/grafik";
+import SuhuAwal from "../atoms/SuhuAwal";
+import SuhuRuangan from "../atoms/SuhuRuangan";
+import Konstanta from "../atoms/Konstanta";
+import Rumus from "../atoms/Rumus";
 
 const CoolingSimulator = () => {
   const [suhuAwal, setSuhuAwal] = useState(80);
@@ -21,20 +16,23 @@ const CoolingSimulator = () => {
   const [waktu, setWaktu] = useState(0);
   const [suhu, setSuhu] = useState(80);
 
+  // Rumus PDB
   const kalkulatorSuhu = (t) => {
     return suhuRuangan + (suhuAwal - suhuRuangan) * Math.exp(-k * t);
   };
 
+  // ketika user mengubah nilai dari suhu awal, suhu ruangan dan k, maka waktunya akan kembali ke 0 atau ke awal
   useEffect(() => {
     setWaktu(0);
   }, [suhuAwal, suhuRuangan, k]);
 
+  // Validasi untuk menghentikan waktu dan suhu ketika suhunya sudah mendekati hasil dari perhitungan
   useEffect(() => {
     const timer = setInterval(() => {
       setWaktu((waktu) => {
-        const Suhu =
+        const suhuSaatIni =
           suhuRuangan + (suhuAwal - suhuRuangan) * Math.exp(-k * waktu);
-        if (Suhu - suhuRuangan <= 0.1 || waktu >= 100) {
+        if (suhuSaatIni - suhuRuangan <= 0.1 || waktu >= 100) {
           return waktu;
         }
         return waktu + 0.5;
@@ -44,10 +42,12 @@ const CoolingSimulator = () => {
     return () => clearInterval(timer);
   }, [suhuAwal, suhuRuangan, k]);
 
+  // Update nilai suhu berdasarkan waktu yang berjalan
   useEffect(() => {
     setSuhu(kalkulatorSuhu(waktu));
   }, [waktu, suhuAwal, suhuRuangan, k]);
 
+  // Data untuk grafik
   const chartData = useMemo(() => {
     const data = [];
     for (let t = 0; t <= 100; t += 2) {
@@ -57,180 +57,100 @@ const CoolingSimulator = () => {
     return data;
   }, [suhuAwal, suhuRuangan, k]);
 
+  const getVisualStyles = (temp, opacity = "22") => {
+    const color = getTempColor(temp);
+    return {
+      backgroundColor: `${color.replace("rgb", "rgba").replace(")", `, 0.${opacity})`)}`,
+      borderColor: color,
+      color: color,
+      boxShadow: `0 0 20px ${color}44`,
+      transition: "all 0.3s ease",
+    };
+  };
+
+  // Fungsi suhu Awal Merah ke Biru
+  const getTempColor = (temp, isSmartphone) => {
+    const min = suhuRuangan;
+    const max = 100;
+    let ratio = Math.max(0, Math.min(1, (temp - min) / (max - min)));
+    const finalRatio = isSmartphone ? Math.pow(ratio, 0.5) : ratio;
+    let r, g, b;
+
+    if (finalRatio > 0.2) {
+      r = 255;
+      g = Math.round(40 * finalRatio);
+      b = Math.round(10 * Math.pow(finalRatio - 0.2, 2));
+    } else {
+      const coldRatio = ratio / 0.2;
+      r = Math.round(10 * finalRatio);
+      g = Math.round(10 * finalRatio);
+      b = 255;
+    }
+    const finalR = ratio < 0.02 ? 0 : r;
+    return `rgb(${finalR}, ${g}, ${b})`;
+  };
+
+  // Fungsi suhu Ruangan Hijau ke Oren
+  const getAmbientColor = (temp) => {
+    const min = 15;
+    const max = 35;
+    const ratio = Math.max(0, Math.min(1, (temp - min) / (max - min)));
+    const red = Math.floor(255 * ratio);
+    const green = 200;
+    const blue = 50;
+    return `rgb(${red}, ${green}, ${blue})`;
+  };
+
   return (
-    <main className="text-white flex flex-col px-4">
-      <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-6 py-10 text-center">
-        Simulasi Pendinginan CPU Smartphone
-      </h1>
-      <div className="flex flex-col md:flex-row gap-2 rounded-xl w-full px-6">
-        {/* Bagian pengaturan suhu */}
-        <div className="flex gap-2 md:w-2/3">
-          <div className="flex flex-col w-full bg-gray-800 border-gray-700 p-6 gap-2 md:gap-6 rounded-xl border">
-            <h1 className="text-center text-xl md:text-2xl border-b border-gray-600 py-2">
-              Pengaturan Suhu
-            </h1>
-            <div className="py-2 border-b border-gray-600">
-              <div className="flex justify-between items-center">
-                <label className="text-sm">Suhu Awal (T0): </label>
-                <span className="font-semibold">{suhuAwal}°C</span>
-              </div>
-              <input
-                type="range"
-                min="30"
-                max="100"
-                value={suhuAwal}
-                onChange={(e) => setSuhuAwal(Number(e.target.value))}
-                className="w-full cursor-pointer accent-secondary"
-              />
-              <div className="flex justify-between items-center text-sm opacity-70">
-                <p>40</p>
-                <p>100°C</p>
-              </div>
-            </div>
-            <div className="border-b border-gray-600 py-2">
-              <div className="flex justify-between items-center">
-                <label className="text-sm">Suhu Ruangan: </label>
-                <span className="font-semibold">{suhuRuangan}°C</span>
-              </div>
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent">
+      <Video />
+      <div className="relative z-20 text-white min-h-screen flex flex-col items-center">
+        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-4 text-white pt-10 pb-2 text-center drop-shadow-xl">
+          VISUALISASI PENDINGINAN PERANGKAT
+        </h1>
 
-              <input
-                type="range"
-                min="15"
-                max="35"
-                value={suhuRuangan}
-                onChange={(e) => setSuhuRuangan(Number(e.target.value))}
-                className="w-full cursor-pointer accent-secondary"
-              />
-              <div className="flex justify-between items-center text-sm opacity-70">
-                <p>15</p>
-                <p>35°C</p>
-              </div>
-            </div>
-            <div className="py-2 border-b border-gray-600">
-              <div className="flex justify-between items-center">
-                <label className="text-sm">Konstanta (k): </label>
-                <span className="font-semibold">{k}</span>
-              </div>
-              <input
-                type="range"
-                min="0.01"
-                max="0.2"
-                step="0.01"
-                stroke="#FFFFFF"
-                value={k}
-                onChange={(e) => setK(Number(e.target.value))}
-                className="w-full cursor-pointer accent-secondary"
-              />
-              <div className="flex justify-between items-center text-sm opacity-70">
-                <p>0.01</p>
-                <p>0.2</p>
-              </div>
-            </div>
-          </div>
+        {/* Penunjuk suhu*/}
+        <div className="flex flex-col md:flex-row w-full max-w-4xl gap-8 mb-8 items-center justify-center backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-xl">
+          <Visual
+            suhu={suhu}
+            waktu={waktu}
+            getTempColor={getTempColor}
+            getVisualStyles={getVisualStyles}
+          />
+
+          <Grafik
+            chartData={chartData}
+            waktu={waktu}
+            suhu={suhu}
+            suhuRuangan={suhuRuangan}
+          />
         </div>
 
-        <div className="w-full">
-          {/* Bagian Grafik */}
-          <div
-            className="w-full flex flex-col gap-2 rounded-xl bg-gray-800 border-gray-700 border"
-            style={{ minHeight: "300px" }}
-          >
-            <h1 className="p-4 text-center md:text-2xl">
-              GRAFIK PERUBAHAN SUHU PERANGKAT
-            </h1>
-            <ResponsiveContainer width="100%" height={250}>
-              <AreaChart
-                data={chartData}
-                margin={{ left: 5, bottom: 30, right: 10 }}
-              >
-                <defs>
-                  <linearGradient id="colorSuhu" x1="0" y1="0" x2="0" y2="1">
-                    {/* Warna atas (Pekat) */}
-                    <stop offset="5%" stopColor="#f27a3a" stopOpacity={0.8} />
-                    {/* Warna bawah (Transparan) */}
-                    <stop offset="95%" stopColor="#f27a3a" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis
-                  dataKey="waktu"
-                  type="number"
-                  domain={[0, 100]}
-                  padding={{ bottom: 30 }}
-                  stroke="#9CA3AF"
-                  label={{
-                    value: "Waktu (t)",
-                    position: "insideBottom",
-                    offset: -15,
-                    style: { textAnchor: "middle", fontSize: "18px" },
-                  }}
-                />
-                <YAxis
-                  domain={[0, 100]}
-                  stroke="#9CA3AF"
-                  label={{
-                    value: "Temperatur (T0)",
-                    angle: -90,
-                    position: "insideLeft",
-                    offset: 15,
-                    style: { textAnchor: "middle", fontSize: "18px" },
-                  }}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#1F2937",
-                    borderColor: "#374151",
-                    color: "#fff",
-                  }}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="suhu"
-                  stroke="#f27a3a"
-                  strokeWidth={3}
-                  dot={false}
-                  isAnimationActive={false}
-                  fill="url(#colorSuhu)"
-                />
-                <ReferenceDot
-                  x={waktu}
-                  y={suhu}
-                  r={7}
-                  fill="#EF4444"
-                  stroke="#FFFFFF"
-                  strokeWidth={2}
-                  isFront={true}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* Bagian Perhitungan Suhu */}
-          <div className="flex flex-col">
-            <div className="flex w-full gap-2 py-2">
-              <div className="rounded-xl bg-gray-800 border-gray-700 border w-1/2 text-center p-4">
-                <p className="text-sm">Suhu saat ini</p>
-                <p className="text-2xl">{suhu.toFixed(1)}°C</p>
-              </div>
-              <div className="w-1/2 text-center rounded-xl bg-gray-800 border-gray-700 border p-4">
-                <p className="text-sm">Waktu Berjalan :</p>
-                <p className="text-2xl">t = {waktu.toFixed(1)}s</p>
-              </div>
-            </div>
-            <div className="text-sm w-full rounded-xl bg-gray-800 border-gray-700 border p-4 flex max-lg:flex-col gap-2">
-              <h1>Persamaan DIfferensial Biasa (PDB) :</h1>
-              <p className="">
-                T({waktu.toFixed(1)}) = {suhuRuangan} + ({suhuAwal} -{" "}
-                {suhuRuangan}) * e^
-                <sup className="text-xs">
-                  (-{k} * {waktu.toFixed(1)})
-                </sup>
-              </p>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl bg-white/5 backdrop-blur-lg p-3 rounded-xl border border-white/10 shadow-2xl">
+          {/* Input suhu Awal */}
+          <SuhuAwal
+            getTempColor={getTempColor}
+            suhuAwal={suhuAwal}
+            setSuhuAwal={setSuhuAwal}
+          />
+          {/* Input suhu Ruangan */}
+          <SuhuRuangan
+            suhuRuangan={suhuRuangan}
+            getAmbientColor={getAmbientColor}
+            setSuhuRuangan={setSuhuRuangan}
+          />
+          {/* Input Konstanta */}
+          <Konstanta k={k} setK={setK} />
         </div>
+        {/* Penunjuk Rumus */}
+        <Rumus
+          suhuRuangan={suhuRuangan}
+          k={k}
+          SuhuAwal={suhuAwal}
+          waktu={waktu}
+        />
       </div>
-    </main>
+    </div>
   );
 };
 
