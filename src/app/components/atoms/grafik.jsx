@@ -1,8 +1,8 @@
 import React from "react";
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ReferenceDot,
   ReferenceLine,
   ResponsiveContainer,
@@ -11,19 +11,44 @@ import {
   YAxis,
 } from "recharts";
 
-const Grafik = ({ chartData, suhuRuangan, waktu, suhu }) => {
+const Grafik = React.memo(({ chartData, suhuRuangan, waktu, suhu }) => {
   return (
     <div className="w-full" style={{ minHeight: "300px" }}>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={chartData}>
+        <AreaChart data={chartData} margin={{ left: 5, bottom: 30, right: 10 }}>
+          <defs>
+            <linearGradient id="colorSuhu" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" />
           <XAxis
             dataKey="waktu"
             type="number"
             domain={[0, 100]}
-            stroke="#ffffff"
+            padding={{ bottom: 30 }}
+            stroke="#9CA3AF"
+            label={{
+              value: "Waktu (t)",
+              position: "insideBottom",
+              offset: -15,
+              style: { textAnchor: "middle", fontSize: "18px" },
+            }}
+            allowDataOverflow={true}
           />
-          <YAxis domain={[0, 100]} stroke="#9CA3AF" />
+          <YAxis
+            domain={[0, 100]}
+            stroke="#9CA3AF"
+            label={{
+              value: "Temperatur (T0)",
+              angle: -90,
+              position: "insideLeft",
+              offset: 15,
+              style: { textAnchor: "middle", fontSize: "18px" },
+            }}
+            allowDataOverflow={true}
+          />
           <Tooltip
             contentStyle={{
               backgroundColor: "#000000",
@@ -41,27 +66,29 @@ const Grafik = ({ chartData, suhuRuangan, waktu, suhu }) => {
               position: "insideTopRight",
             }}
           />
-          <Line
+          <Area
             type="monotone"
             dataKey="suhu"
             stroke="#ffffff"
-            strokeWidth={3}
+            strokeWidth={2}
             dot={false}
             isAnimationActive={false}
+            fill="url(#colorSuhu)"
           />
           <ReferenceDot
             x={waktu}
             y={suhu}
             r={7}
             fill="#000000"
+            isAnimationActive={false}
             stroke="#FFFFFF"
             strokeWidth={2}
             isFront={true}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
-};
+});
 
 export default Grafik;

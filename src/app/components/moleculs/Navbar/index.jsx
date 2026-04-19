@@ -15,11 +15,14 @@ const Navigation = () => {
             <a href="/" className="py-4 hover:text-hover">
               Home
             </a>
-            <a href="/beranda" className="py-4 hover:text-hover">
+            <a href="/about" className="py-4 hover:text-hover">
               Beranda
             </a>
-            <a href="/ceksuhu" className="py-4 mb-6 hover:text-hover">
-              Cek Suhu
+            <a href="/visualisasi" className="py-4 mb-6 hover:text-hover">
+              visualisasi
+            </a>
+            <a href="/materi" className="py-4 mb-6 hover:text-hover">
+              materi
             </a>
           </div>
           <button
