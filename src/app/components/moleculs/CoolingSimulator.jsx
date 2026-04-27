@@ -121,7 +121,7 @@ const CoolingSimulator = () => {
             className="w-full md:w-44 h-auto rounded-3xl border transition-all duration-300 flex flex-col items-center justify-start shrink-0 shadow-[0_8px_40px_-5px_rgb(0,0,0,0.6)] relative overflow-hidden p-6 md:p-8"
             style={getVisualStyles(currentTemp, "20")}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-black/30 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-white/10 to-black/30 pointer-events-none"></div>
             <div className="relative z-10 flex flex-col items-center">
               <span
                 className="text-[10px] font-mono uppercase tracking-widest mb-5 bg-black/40 px-3 py-1 rounded-full border border-white/10"
