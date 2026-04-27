@@ -1,218 +1,126 @@
-"use client"; // 1. Wajib ditambahkan untuk Next.js
+"use client";
 
-import Link from "next/link"; // 2. Perbaikan import Link Next.js
-import { motion } from "framer-motion"; // 3. Perbaikan import Framer Motion
-import { BarChart3, Code2, Gamepad2, Sparkles } from "lucide-react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import { motion } from "framer-motion";
 
-// 4. Ubah menjadi export default agar bisa langsung dirender Next.js
 export default function Home() {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Berhenti Menghafal Rumus.{" "}
-              <span className="text-blue-600">Mulai Visualisasikan.</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Platform interaktif untuk mahasiswa informatika belajar Kalkulus
-              dan Aljabar Linear melalui kode dan simulasi visual.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              {/* 5. Ubah atribut 'to' menjadi 'href' */}
-              <Link
-                href="/materi"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition text-center"
-              >
-                Eksplorasi Materi
-              </Link>
-              <a
-                href="#fitur"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition text-center"
-              >
-                Cara Kerja
-              </a>
-            </div>
-          </div>
+    <div className="h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-white text-center p-4 overflow-hidden relative">
+      {/* 1. Partikel Background */}
+      {init && (
+        <Particles
+          id="tsparticles"
+          options={{
+            fpsLimit: 60,
+            interactivity: {
+              events: {
+                onHover: { enable: false },
+                resize: true,
+              },
+            },
+            particles: {
+              color: { value: "#ffffff" },
+              links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: true,
+                opacity: 0.3,
+                width: 1,
+              },
+              move: {
+                enable: true,
+                speed: 0.7,
+                direction: "none",
+                random: true,
+                straight: false,
+                outModes: { default: "out" },
+              },
+              number: {
+                density: { enable: true, area: 800 },
+                value: 200,
+              },
+              opacity: { value: 0.2 },
+              shape: { type: "circle" },
+              size: { value: { min: 1, max: 2 } },
+            },
+            detectRetina: true,
+          }}
+        />
+      )}
 
-          <motion.div
-            className="flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="bg-linear-to-br from-blue-500 to-purple-600 p-8 rounded-2xl shadow-2xl">
-              <pre className="text-white">
-                <code>{`function cooling(T, Ts, k, t) {
-  return Ts + (T - Ts) *
-         Math.exp(-k * t);
-}
+      {/* 2. Konten Utama dengan Animasi Muncul */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative z-10 flex flex-col items-center"
+      >
+        <h1 className="text-4xl md:text-6xl font-semibold mb-2 tracking-tight drop-shadow-lg">
+          Simulasi Pendinginan Perangkat
+        </h1>
 
-// Hukum Pendinginan Newton
-const temp = cooling(
-  100, 25, 0.05, 10
-);
-console.log(\`T = \${temp}°C\`);`}</code>
-              </pre>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        <p className="mb-12 text-white/50 text-lg font-light">
+          Visualisasi interaktif proses pendinginan perangkat
+        </p>
 
-      <section id="fitur" className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Fitur Unggulan
-            </h2>
-            <p className="text-xl text-gray-600">
-              Belajar matematika dengan cara yang berbeda
-            </p>
-          </div>
+        {/* Kontainer Tabs */}
+        <div className="flex p-1.5 gap-1 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl items-center">
+          <Link href="/simulator">
+            <button className="relative px-8 py-3 rounded-full transition-all duration-300 group overflow-hidden bg-white/10 border border-white/10 hover:border-white/20">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <span className="relative z-10 font-medium text-white group-hover:text-blue-400 transition-colors">
+                Mulai Simulasi
+              </span>
+            </button>
+          </Link>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition cursor-pointer"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <BarChart3 className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Simulasi Real-time
-              </h3>
-              <p className="text-gray-600">
-                Lihat perubahan grafik dan data secara langsung saat Anda
-                mengubah parameter. Matematika jadi hidup!
-              </p>
-            </motion.div>
+          <Link href="/rumus">
+            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+              Rumus
+            </button>
+          </Link>
 
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition cursor-pointer"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                <Code2 className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Math in Code</h3>
-              <p className="text-gray-600">
-                Terapkan konsep matematika langsung ke dalam kode
-                JavaScript/Python. Teori jadi praktik!
-              </p>
-            </motion.div>
+          <Link href="/info">
+            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+              Info
+            </button>
+          </Link>
 
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition cursor-pointer"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <Gamepad2 className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Pendekatan Gamifikasi
-              </h3>
-              <p className="text-gray-600">
-                Selesaikan tantangan, kumpulkan poin, dan naik level. Belajar
-                jadi lebih seru dan engaging!
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Materi Terpopuler
-            </h2>
-            <p className="text-xl text-gray-600">
-              Mulai petualanganmu dari sini
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Ubah atribut 'to' menjadi 'href' */}
-            <Link href="/materi/pendinginan-newton" className="group">
-              <div className="bg-white border-2 border-blue-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-3xl">🌡️</span>
-                  <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                    🟩 Pemula
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">
-                  Persamaan Diferensial Biasa
-                </h3>
-                <p className="text-gray-600">
-                  Pelajari laju pendinginan menggunakan Hukum Newton dengan
-                  simulasi interaktif.
-                </p>
-              </div>
-            </Link>
-
-            <div className="bg-white border-2 border-purple-200 rounded-xl p-6 hover:border-purple-400 hover:shadow-lg transition cursor-pointer">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-3xl">📐</span>
-                <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
-                  🟨 Menengah
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">
-                Transformasi Linear
-              </h3>
-              <p className="text-gray-600">
-                Visualisasikan rotasi, scaling, dan shearing vektor dalam ruang
-                2D dan 3D.
-              </p>
-            </div>
-
-            <div className="bg-white border-2 border-red-200 rounded-xl p-6 hover:border-red-400 hover:shadow-lg transition cursor-pointer">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-3xl">🌊</span>
-                <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">
-                  🟥 Sulit
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">
-                Transformasi Fourier
-              </h3>
-              <p className="text-gray-600">
-                Analisis sinyal dan gelombang menggunakan FFT dengan visualisasi
-                spektrum frekuensi.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/materi"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Lihat Semua Materi
-              <Sparkles className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-linear-to-r from-blue-600 to-purple-600 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Siap Memulai Petualangan Matematika?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Bergabunglah dengan ribuan mahasiswa informatika yang sudah belajar
-            dengan cara yang lebih interaktif.
-          </p>
-          <Link
-            href="/materi"
-            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition"
-          >
-            Mulai Sekarang Gratis
+          <Link href="/about">
+            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+              Kami
+            </button>
           </Link>
         </div>
-      </section>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-8 left-8 z-20 flex items-center gap-3"
+      >
+        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+        <span className="text-xs font-light tracking-[0.2em] text-white/30 border-l border-white/10 pl-3">
+          Di buat untuk memenuhi projek UAS mata kuliah kalkulus lanjut
+        </span>
+      </motion.div>
+
+      {/* Glow Statis */}
+      <div className="absolute -z-10 w-[600px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
     </div>
   );
 }
