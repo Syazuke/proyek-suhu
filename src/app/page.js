@@ -80,7 +80,7 @@ export default function Home() {
         <div className="flex p-1.5 gap-1 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl items-center">
           <Link href="/simulator">
             <button className="relative px-8 py-3 rounded-full transition-all duration-300 group overflow-hidden bg-white/10 border border-white/10 hover:border-white/20">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative z-10 font-medium text-white group-hover:text-blue-400 transition-colors">
                 Mulai Simulasi
               </span>
@@ -120,7 +120,7 @@ export default function Home() {
       </motion.div>
 
       {/* Glow Statis */}
-      <div className="absolute -z-10 w-[600px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute -z-10 w-150 h-150 bg-blue-600/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
     </div>
   );
 }
