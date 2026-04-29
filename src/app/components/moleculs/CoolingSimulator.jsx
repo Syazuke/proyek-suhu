@@ -283,5 +283,3 @@ const CoolingSimulator = () => {
 };
 
 export default CoolingSimulator;
-
-CoolingSimulator.jsx;

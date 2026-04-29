@@ -12,9 +12,9 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="bg-white text-black shadow-sm sticky top-0 z-50">
-      <div className="mx-auto px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 py-3">
         <div className="flex justify-between items-center py-2">
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center">
             <h1 className="text-3xl">Suhu</h1>
           </div>
           <div className="hidden md:inline space-x-6">

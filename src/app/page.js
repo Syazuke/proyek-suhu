@@ -144,11 +144,11 @@ export default function Home() {
       >
         {/* Menyapa pengguna jika nama sudah diisi */}
 
-        <h1 className="text-4xl md:text-6xl font-semibold mb-2 tracking-tight drop-shadow-lg">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-3 tracking-tight drop-shadow-lg">
           Simulasi Pendinginan Perangkat
         </h1>
 
-        <p className="mb-4 text-white/50 text-lg font-light">
+        <p className="mb-4 text-white/50 text-xs md:text-lg font-light">
           Visualisasi interaktif proses pendinginan perangkat
         </p>
         {!isShowPopup && username && (
@@ -166,34 +166,34 @@ export default function Home() {
         {/* Kontainer Tabs */}
         <div className="flex p-1.5 gap-1 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl items-center">
           <Link href="/simulator">
-            <button className="relative px-8 py-3 rounded-full transition-all duration-300 group overflow-hidden bg-white/10 border border-white/10 hover:border-white/20">
+            <button className="relative px-4 md:px-8 py-3 rounded-full transition-all duration-300 group overflow-hidden bg-white/10 border border-white/10 hover:border-white/20">
               <div className="absolute inset-0 bg-linear-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="relative z-10 font-medium text-white group-hover:text-blue-400 transition-colors">
+              <span className="relative z-10 text-sm md:text-md lg:text-lg font-medium text-white group-hover:text-blue-400 transition-colors">
                 Mulai Simulasi
               </span>
             </button>
           </Link>
 
           <Link href="/rumus">
-            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
               Rumus
             </button>
           </Link>
 
           <Link href="/info">
-            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
               Info
             </button>
           </Link>
 
           <Link href="/about">
-            <button className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
               Kami
             </button>
           </Link>
           <button
             onClick={handleLogoutUsername}
-            className="px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium"
+            className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg"
           >
             <p>Logout</p>
           </button>
