@@ -9,7 +9,7 @@ const Footer = () => {
     return null;
   }
   return (
-    <div className="text-black">
+    <div className="text-black p-4">
       <p>© {new Date().getFullYear()} Simulasi Perubahan Suhu</p>
     </div>
   );

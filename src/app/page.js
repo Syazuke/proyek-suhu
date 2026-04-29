@@ -145,7 +145,7 @@ export default function Home() {
         {/* Menyapa pengguna jika nama sudah diisi */}
 
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-3 tracking-tight drop-shadow-lg">
-          Simulasi Pendinginan Perangkat
+          Simulasi Pendinginan loremasdacosacmasmd
         </h1>
 
         <p className="mb-4 text-white/50 text-xs md:text-lg font-light">

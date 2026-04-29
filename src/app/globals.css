@@ -2,6 +2,11 @@
 
 :root {
   background: transparent !important;
+  --hover: blue;
+}
+
+@theme {
+  --color-hover: var(--hover);
 }
 
 body {
