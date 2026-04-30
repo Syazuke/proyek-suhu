@@ -159,7 +159,7 @@ export default function Home() {
             className="mb-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm backdrop-blur-md"
           >
             Mari mulai simulasi,
-            <span className="font-semibold text-white"> {username}</span> 🚀
+            <span className="font-semibold text-white"> {username}</span>❄️
           </motion.div>
         )}
 
