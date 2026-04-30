@@ -24,6 +24,27 @@ const anggota = [
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: "/anggota3.jpg",
   },
+  {
+    nama: "Budi Santoso",
+    nim: "112233445",
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: "/anggota3.jpg",
+  },
+  {
+    nama: "Budi Santoso",
+    nim: "112233445",
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: "/anggota3.jpg",
+  },
+  {
+    nama: "Budi Santoso",
+    nim: "112233445",
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: "/anggota3.jpg",
+  },
 ];
 
 export default function KamiPage() {
