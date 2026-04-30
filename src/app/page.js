@@ -48,7 +48,6 @@ export default function Home() {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-white text-center p-4 overflow-hidden relative">
-      {/* POP-UP MODAL USERNAME */}
       <AnimatePresence>
         {isShowPopup && (
           <motion.div
