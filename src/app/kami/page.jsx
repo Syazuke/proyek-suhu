@@ -1,4 +1,5 @@
 import Image from "next/image";
+import pahlawan from "../../../public/pahlawan.png";
 
 const anggota = [
   {
@@ -7,7 +8,7 @@ const anggota = [
     peran: "Frontend Developer",
     deskripsi:
       "Bertanggung jawab dalam pembuatan tampilan website menggunakan Next.js dan Tailwind CSS.",
-    foto: "/anggota1.jpg",
+    foto: {pahlawan}
   },
   {
     nama: "Raivan",
