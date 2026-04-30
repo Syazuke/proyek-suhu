@@ -30,7 +30,7 @@ const Navigation = () => {
             <a href="/info" className="py-4 mb-6 hover:text-hover">
               Info
             </a>
-            <a href="/about" className="py-4 mb-6 hover:text-hover">
+            <a href="/kami" className="py-4 mb-6 hover:text-hover">
               Kami
             </a>
           </div>
@@ -57,7 +57,7 @@ const Navigation = () => {
             <a href="/info" className="py-4 hover:text-hover">
               Info
             </a>
-            <a href="/about" className="py-4 hover:text-hover">
+            <a href="/kami" className="py-4 hover:text-hover">
               Kami
             </a>
           </div>
