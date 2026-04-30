@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+cara install web nya
 
-## Getting Started
+yang dibutuhkan
+1. node js (install aja di internet)
+2. git (ini juga ada di internet)
 
-First, run the development server:
+set up aplikasi
+1. git clone https://github.com/Syazuke/proyek-suhu.git
+2. cd tugas-lkm
+3. npm install
+4. npm run dev
+5. buka http://localhost:3000/ di browser
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+sekarang cara push atau pull github 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+push = masukin program yang udah di coding ke repository
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+pull = masukin program terbaru dari repository github ke file yang di coding
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+pertama-tama
 
-## Learn More
+masuk dlu ke direktori di cmd atau terminal dengan perintah --> cd proyek-suhu
 
-To learn more about Next.js, take a look at the following resources:
+contoh : dari awalnya misal 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+C:\Users\ASUS> harus jadi C:\Users\ASUS\proyek-suhu>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+nah itu tuh pake perintah cd proyek-suhu
 
-## Deploy on Vercel
+ terus untuk konfigurasi awal itu
+ 1. git config --global user.email emailkalianyangdipakebuatdaftargithub
+ 2. git config --global user.name usernamegithubkalian
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+sekarang untuk cara pull (di terminal atau cmd)
+1. git pull origin main
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+sekarang untuk push (di terminal atau cmd)
+1. git add .
+2. git commit -m "nama commit"
+3. git push -u origin main
