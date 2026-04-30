@@ -11,7 +11,7 @@ const Navigation = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-white text-black shadow-sm sticky top-0 z-50">
+    <nav className="bg-white text-black shadow-sm top-0 z-50">
       <div className="mx-auto px-4 py-3">
         <div className="flex justify-between items-center py-2">
           <div className="flex justify-center items-center">
