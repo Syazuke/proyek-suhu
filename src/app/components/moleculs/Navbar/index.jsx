@@ -10,7 +10,7 @@ const Navigation = () => {
   }
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-white text-black shadow-sm sticky top-0 z-50">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="mx-auto px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
           <h1>Suhu</h1>
@@ -40,7 +40,7 @@ const Navigation = () => {
         </div>
         {isOpen && (
           <div
-            className={`absolute top-full left-0 w-full text-black bg-white flex flex-col py-6 px-4 shadow-lg z-50 ${isOpen ? "border-b border-(--divider)" : ""}`}
+            className={`absolute top-full left-0 w-full bg-white flex flex-col py-6 px-4 shadow-lg z-50 ${isOpen ? "border-b border-(--divider)" : ""}`}
           >
             <a href="/" className="py-4 hover:text-hover">
               Home
