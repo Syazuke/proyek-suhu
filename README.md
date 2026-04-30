@@ -5,7 +5,7 @@ yang dibutuhkan
 2. git (ini juga ada di internet)
 
 set up aplikasi
-1. git clone https://github.com/fuzi11/tugas-lkm.git (ini cuman sekali guyssss)
+1. git clone https://github.com/Syazuke/proyek-suhu.git
 2. cd tugas-lkm
 3. npm install
 4. npm run dev
