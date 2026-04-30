@@ -2,15 +2,15 @@ import Image from "next/image";
 
 const anggota = [
   {
-    nama: "Ahmad Fauzi",
-    nim: "123456789",
+    nama: "Fariz",
+    nim: "257006111",
     peran: "Frontend Developer",
     deskripsi:
       "Bertanggung jawab dalam pembuatan tampilan website menggunakan Next.js dan Tailwind CSS.",
     foto: "/anggota1.jpg",
   },
   {
-    nama: "Siti Aisyah",
+    nama: "Raivan",
     nim: "987654321",
     peran: "Backend Developer",
     deskripsi:
@@ -18,28 +18,28 @@ const anggota = [
     foto: "/anggota2.jpg",
   },
   {
-    nama: "Budi Santoso",
+    nama: "Rahman",
     nim: "112233445",
     peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: "/anggota3.jpg",
   },
   {
-    nama: "Budi Santoso",
+    nama: "Gemmy",
     nim: "112233445",
     peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: "/anggota3.jpg",
   },
   {
-    nama: "Budi Santoso",
+    nama: "Agnia",
     nim: "112233445",
     peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: "/anggota3.jpg",
   },
   {
-    nama: "Budi Santoso",
+    nama: "Indah",
     nim: "112233445",
     peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
