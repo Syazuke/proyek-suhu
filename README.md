@@ -9,7 +9,7 @@ set up aplikasi
 2. cd tugas-lkm
 3. npm install
 4. npm run dev
-5. buka http://localhost:5173/ di browser
+5. buka http://localhost:3000/ di browser
 
 sekarang cara push atau pull github 
 
@@ -19,13 +19,13 @@ pull = masukin program terbaru dari repository github ke file yang di coding
 
 pertama-tama
 
-masuk dlu ke direktori di cmd atau terminal dengan perintah --> cd tugas lkm
+masuk dlu ke direktori di cmd atau terminal dengan perintah --> cd proyek-suhu
 
 contoh : dari awalnya misal 
 
-C:\Users\ASUS> harus jadi C:\Users\ASUS\tugas-lkm>
+C:\Users\ASUS> harus jadi C:\Users\ASUS\proyek-suhu>
 
-nah itu tuh pake perintah cd tugas-lkm
+nah itu tuh pake perintah cd proyek-suhu
 
  terus untuk konfigurasi awal itu
  1. git config --global user.email emailkalianyangdipakebuatdaftargithub
