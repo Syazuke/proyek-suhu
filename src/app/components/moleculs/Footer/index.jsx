@@ -8,10 +8,11 @@ const Footer = () => {
   if (pathname.endsWith("/")) {
     return null;
   }
+
   return (
-    <div className="text-black p-4">
+    <footer className="fixed bottom-0 w-full text-white p-4 bg-transparent z-50 text-center">
       <p>© {new Date().getFullYear()} Simulasi Perubahan Suhu</p>
-    </div>
+    </footer>
   );
 };
 
