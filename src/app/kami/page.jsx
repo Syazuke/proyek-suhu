@@ -2,7 +2,6 @@ import Image from "next/image";
 import pahlawan from "../../../public/pahlawan.png";
 import Yow from "../../../public/Yow.png";
 
-
 const anggota = [
   {
     nama: "Rahman",
@@ -10,7 +9,7 @@ const anggota = [
     peran: "Frontend Developer",
     deskripsi:
       "Bertanggung jawab dalam pembuatan tampilan website menggunakan Next.js dan Tailwind CSS .",
-    foto: pahlawan
+    foto: pahlawan,
   },
   {
     nama: "Gemmy Dwirismariyan Hagi",
@@ -18,7 +17,7 @@ const anggota = [
     peran: "Backend Developer",
     deskripsi:
       "Mengelola database dan API untuk memastikan data berjalan dengan baik.",
-    foto: Yow
+    foto: Yow,
   },
   {
     nama: "Agnia Agustin Ramadhani",
@@ -52,8 +51,10 @@ const anggota = [
 
 export default function KamiPage() {
   return (
-    <div className="min-h-screen bg-blue-100 py-10 px-5">
-      <h1 className="text-3xl font-bold text-center text-black mb-10">Tim Kami</h1>
+    <div className="min-h-screen bg-blue-100 py-10 px-5 pt-20">
+      <h1 className="text-3xl font-bold text-center text-black mb-10">
+        Tim Kami
+      </h1>
 
       <div className="grid md:grid-cols-3 gap-8">
         {anggota.map((item, index) => (

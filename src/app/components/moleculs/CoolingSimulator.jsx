@@ -109,7 +109,7 @@ const CoolingSimulator = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-20 text-white min-h-screen flex flex-col items-center pb-16 pt-20"
+        className="relative z-20 text-white min-h-screen flex flex-col items-center pb-16 pt-10"
       >
         <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-4 text-white pt-10 pb-2 text-center drop-shadow-xl">
           VISUALISASI PENDINGINAN PERANGKAT

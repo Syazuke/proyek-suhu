@@ -30,8 +30,7 @@ export default function MoreInfo() {
 
   return (
     <div
-      // Latar belakang halaman hitam gradasi
-      className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden`}
+      className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden pt-20`}
     >
       {/* Background Gradient CSS Tambahan di belakang Particles */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-[#0a0a0a] to-black z-0 pointer-events-none"></div>
