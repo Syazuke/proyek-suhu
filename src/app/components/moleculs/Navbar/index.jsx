@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Logo from "../../../../../public/Logo.png";
+import Image from "next/image";
 
 const Navigation = () => {
   const pathname = usePathname();
@@ -12,9 +14,19 @@ const Navigation = () => {
 
   return (
     <nav className="bg-transparent text-white top-0 z-50 absolute w-full">
-      <div className="mx-auto px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 py-3 sm:px-6 lg:px-4">
         <div className="flex justify-between items-center py-2">
-          <h1 className="text-3xl">Suhu</h1>
+          <a href="/" className="flex gap-2">
+            <Image
+              src={Logo}
+              alt="ini logo"
+              className="h-10 w-11 md:h-13 md:w-14 lg:h-15 lg:w-16"
+            />
+            <div className="flex flex-col items-start justify-center font-bold text-sm md:text-md lg:text-lg text-white hover:text-hover transition duration-500 cursor-pointer">
+              <span className="">Simulasi Pendingin</span>
+              <span>Perangkat</span>
+            </div>
+          </a>
           <div className="hidden md:flex flex-1 justify-between max-w-xs">
             <a
               href="/"
@@ -26,25 +38,25 @@ const Navigation = () => {
               href="/simulator"
               className="py-2 hover:text-hover transition-all duration-500"
             >
-              simulasi
+              Simulasi
             </a>
             <a
               href="/info"
               className="py-2 hover:text-hover transition-all duration-500"
             >
-              info
+              Info
             </a>
             <a
               href="/rumus"
               className="py-2 hover:text-hover transition-all duration-500"
             >
-              rumus
+              Rumus
             </a>
             <a
               href="/kami"
               className="py-2 hover:text-hover transition-all duration-500"
             >
-              kami
+              Kami
             </a>
           </div>
 
@@ -70,25 +82,25 @@ const Navigation = () => {
               href="/simulator"
               className="py-4 hover:text-hover transition-all duration-500"
             >
-              simulasi
+              Simulasi
             </a>
             <a
               href="/info"
               className="py-4 hover:text-hover transition-all duration-500"
             >
-              info
+              Info
             </a>
             <a
               href="/rumus"
               className="py-4 hover:text-hover transition-all duration-500"
             >
-              rumus
+              Rumus
             </a>
             <a
               href="/kami"
               className="py-4 hover:text-hover transition-all duration-500"
             >
-              kami
+              Kami
             </a>
           </div>
         )}

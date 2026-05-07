@@ -2,7 +2,7 @@
 
 :root {
   background: transparent !important;
-  --hover: blue;
+  --hover: #63b3ed;
 }
 
 @theme {
