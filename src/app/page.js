@@ -167,32 +167,32 @@ export default function Home() {
           <Link href="/simulator">
             <button className="relative px-4 md:px-8 py-3 rounded-full transition-all duration-300 group overflow-hidden bg-white/10 border border-white/10 hover:border-white/20">
               <div className="absolute inset-0 bg-linear-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="relative z-10 text-sm md:text-md lg:text-lg font-medium text-white group-hover:text-blue-400 transition-colors">
+              <span className="relative z-10 text-sm md:text-md lg:text-lg font-medium text-white group-hover:text-blue-400 transition-colors cursor-pointer">
                 Mulai Simulasi
               </span>
             </button>
           </Link>
 
           <Link href="/rumus">
-            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 cursor-pointer transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
               Rumus
             </button>
           </Link>
 
           <Link href="/info">
-            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all cursor-pointer duration-300 font-medium text-sm md:text-md lg:text-lg">
               Info
             </button>
           </Link>
 
           <Link href="/about">
-            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg">
+            <button className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all cursor-pointer duration-300 font-medium text-sm md:text-md lg:text-lg">
               Kami
             </button>
           </Link>
           <button
             onClick={handleLogoutUsername}
-            className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium text-sm md:text-md lg:text-lg"
+            className="px-2 md:px-6 py-3 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 font-medium cursor-pointer text-sm md:text-md lg:text-lg"
           >
             <p>Logout</p>
           </button>
