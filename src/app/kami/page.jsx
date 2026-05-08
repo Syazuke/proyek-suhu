@@ -50,7 +50,7 @@ const anggota = [
 
 export default function KamiPage() {
   return (
-    <div className="min-h-screen bg-black py-10 px-5">
+    <div className="min-h-screen bg-black py-25 px-5">
       <h1 className="text-4xl font-bold text-center text-white mb-10">Tim Kami</h1>
 
       <div className="grid md:grid-cols-3 gap-8">
