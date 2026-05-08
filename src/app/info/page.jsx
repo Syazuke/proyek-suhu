@@ -30,8 +30,7 @@ export default function MoreInfo() {
 
   return (
     <div
-      // Latar belakang halaman hitam gradasi
-      className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden`}
+      className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden pt-20`}
     >
       {/* Background Gradient CSS Tambahan di belakang Particles */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-[#0a0a0a] to-black z-0 pointer-events-none"></div>
@@ -110,10 +109,10 @@ export default function MoreInfo() {
             </h2>
             <p className="relative z-10 text-[0.95rem] text-neutral-400 leading-relaxed transition-transform duration-700 group-hover/card:translate-y-1">
               Website ini adalah platform yang dibuat untuk mengukur dan
-              memantau suhu perangkat, khususnya dalam kondisi suhu ruangan.
-              Website ini menampilkan data suhu secara interaktif menggunakan
-              fungsi temperatur warna dan real-time untuk membantu pengguna
-              memahami kondisi perangkat mereka.
+              memantau suhu perangkat menggunakan rumus PDB. Website ini
+              menampilkan data suhu secara interaktif menggunakan fungsi
+              temperatur warna dan real-time untuk membantu pengguna memahami
+              kondisi perangkat mereka.
             </p>
           </div>
 
