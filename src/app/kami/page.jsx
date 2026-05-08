@@ -4,6 +4,7 @@ import Fariz from "../../../public/Fariz.png";
 import Agnia from "../../../public/Agnia.png";
 import Rahman from "../../../public/Rahman.png";
 import Raivan from "../../../public/Raivan.png";
+import Indah from "../../../public/Indah.png";
 
 
 const anggota = [
@@ -18,31 +19,31 @@ const anggota = [
     nama: "Gemmy Dwirismariyan Hagi",
     nim: "257006111074",
     deskripsi:
-      "Merancang dan mendesain page Kami.",
+      "Bertanggung jawab dalam merancang dan mendesain page Kami.",
     foto: Gemmy
   },
   {
     nama: "Agnia Agustin Ramadhani",
     nim: "257006111090",
-    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    deskripsi: "Bertanggung jawab dalam merancang dan mendesain page Rumus.",
     foto: Agnia
   },
   {
     nama: "Rafi Nurraivan",
     nim: "257006111103",
-    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    deskripsi: "Bertanggung jawab dalam visualisasi keseluruhan website dan halaman awal serta fungsi interaktif temperatur warna.",
     foto: Raivan
   },
   {
     nama: "Indah Kasih Lestari",
     nim: "257006111106",
-    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
-    foto: "/anggota3.jpg",
+    deskripsi: "Bertanggung jawab dalam merancang page Rumus.",
+    foto: Indah
   },
   {
     nama: "Fariz Alwasi",
     nim: "257006111117",
-    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    deskripsi: "Membuat grafik pada website tersebut lalu membuat popup input username pada awal buka website dan membuat navigation dan juga footer.",
     foto: Fariz
   },
 ];
@@ -70,7 +71,7 @@ export default function KamiPage() {
             <h2 className="text-xl bg-gray-800 rounded-2xl font-semi bold">{item.nama}</h2>
             <p className="text-white-500 bg-gray-800 rounded-2xl font-semi bold mt-2">{item.nim}</p>
 
-            <p className="mt-7 font-semi bold text-blue-800">{item.peran}</p>
+            <p className="font-semi bold text-blue-800">{item.peran}</p>
 
             <p className="text-sm text-gray-400 rounded-2xl bg-gray-800 mt-2">{item.deskripsi}</p>
           </div>
