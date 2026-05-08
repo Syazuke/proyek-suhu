@@ -10,15 +10,13 @@ const anggota = [
   {
     nama: "Rahman",
     nim: "257006111073",
-    peran: "Frontend Developer",
     deskripsi:
-      "Bertanggung jawab dalam pembuatan tampilan website menggunakan Next.js dan Tailwind CSS .",
+      "Bertanggung jawab dalam pembuatan dan mendesain page Info.",
     foto: Rahman
   },
   {
     nama: "Gemmy Dwirismariyan Hagi",
     nim: "257006111074",
-    peran: "Backend Developer",
     deskripsi:
       "Merancang dan mendesain page Kami.",
     foto: Gemmy
@@ -26,28 +24,24 @@ const anggota = [
   {
     nama: "Agnia Agustin Ramadhani",
     nim: "257006111090",
-    peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: Agnia
   },
   {
     nama: "Rafi Nurraivan",
     nim: "257006111103",
-    peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: Raivan
   },
   {
     nama: "Indah Kasih Lestari",
     nim: "257006111106",
-    peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: "/anggota3.jpg",
   },
   {
     nama: "Fariz Alwasi",
     nim: "257006111117",
-    peran: "UI/UX Designer",
     deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
     foto: Fariz
   },
