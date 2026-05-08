@@ -4,54 +4,59 @@ import Fariz from "../../../public/Fariz.png";
 import Agnia from "../../../public/Agnia.png";
 import Rahman from "../../../public/Rahman.png";
 import Raivan from "../../../public/Raivan.png";
-import Indah from "../../../public/Indah.png";
-
 
 const anggota = [
   {
     nama: "Rahman",
     nim: "257006111073",
+    peran: "Frontend Developer",
     deskripsi:
-      "Bertanggung jawab dalam pembuatan dan mendesain page Info.",
-    foto: Rahman
+      "Bertanggung jawab dalam pembuatan tampilan website menggunakan Next.js dan Tailwind CSS .",
+    foto: Rahman,
   },
   {
     nama: "Gemmy Dwirismariyan Hagi",
     nim: "257006111074",
-    deskripsi:
-      "Bertanggung jawab dalam merancang dan mendesain page Kami.",
-    foto: Gemmy
+    peran: "Backend Developer",
+    deskripsi: "Merancang dan mendesain page Kami.",
+    foto: Gemmy,
   },
   {
     nama: "Agnia Agustin Ramadhani",
     nim: "257006111090",
-    deskripsi: "Bertanggung jawab dalam merancang dan mendesain page Rumus.",
-    foto: Agnia
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: Agnia,
   },
   {
     nama: "Rafi Nurraivan",
     nim: "257006111103",
-    deskripsi: "Bertanggung jawab dalam visualisasi keseluruhan website dan halaman awal serta fungsi interaktif temperatur warna.",
-    foto: Raivan
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: Raivan,
   },
   {
     nama: "Indah Kasih Lestari",
     nim: "257006111106",
-    deskripsi: "Bertanggung jawab dalam merancang page Rumus.",
-    foto: Indah
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: "/anggota3.jpg",
   },
   {
     nama: "Fariz Alwasi",
     nim: "257006111117",
-    deskripsi: "Membuat grafik pada website tersebut lalu membuat popup input username pada awal buka website dan membuat navigation dan juga footer.",
-    foto: Fariz
+    peran: "UI/UX Designer",
+    deskripsi: "Merancang desain antarmuka agar menarik dan mudah digunakan.",
+    foto: Fariz,
   },
 ];
 
 export default function KamiPage() {
   return (
     <div className="min-h-screen bg-black py-10 px-5">
-      <h1 className="text-4xl font-bold text-center text-white mb-10">Tim Kami</h1>
+      <h1 className="text-4xl font-bold text-center text-white mb-10">
+        Tim Kami
+      </h1>
 
       <div className="grid md:grid-cols-3 gap-8">
         {anggota.map((item, index) => (
@@ -68,12 +73,18 @@ export default function KamiPage() {
               />
             </div>
 
-            <h2 className="text-xl bg-gray-800 rounded-2xl font-semi bold">{item.nama}</h2>
-            <p className="text-white-500 bg-gray-800 rounded-2xl font-semi bold mt-2">{item.nim}</p>
+            <h2 className="text-xl bg-gray-800 rounded-2xl font-semi bold">
+              {item.nama}
+            </h2>
+            <p className="text-white-500 bg-gray-800 rounded-2xl font-semi bold mt-2">
+              {item.nim}
+            </p>
 
-            <p className="font-semi bold text-blue-800">{item.peran}</p>
+            <p className="mt-7 font-semi bold text-blue-800">{item.peran}</p>
 
-            <p className="text-sm text-gray-400 rounded-2xl bg-gray-800 mt-2">{item.deskripsi}</p>
+            <p className="text-sm text-gray-400 rounded-2xl bg-gray-800 mt-2">
+              {item.deskripsi}
+            </p>
           </div>
         ))}
       </div>
