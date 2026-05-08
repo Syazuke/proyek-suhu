@@ -32,7 +32,7 @@ nah itu tuh pake perintah cd proyek-suhu
  2. git config --global user.name usernamegithubkalian
 
 sekarang untuk cara pull (di terminal atau cmd)
-1. git pull origin main
+1. -+
 
 sekarang untuk push (di terminal atau cmd)
 1. git add .
