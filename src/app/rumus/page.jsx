@@ -108,12 +108,24 @@ export default function RumusPage() {
                 </span>
               </li>
               <li>
-                <strong>T<sub>env</sub></strong>: Suhu ruangan
-                <span className="text-blue-400 font-semibold"> ({ambientTemp} °C)</span>
+                <strong>
+                  T<sub>env</sub>
+                </strong>
+                : Suhu ruangan
+                <span className="text-blue-400 font-semibold">
+                  {" "}
+                  ({ambientTemp} °C)
+                </span>
               </li>
               <li>
-                <strong>T<sub>0</sub></strong>: Suhu awal
-                <span className="text-blue-400 font-semibold"> ({initialTemp} °C)</span>
+                <strong>
+                  T<sub>0</sub>
+                </strong>
+                : Suhu awal
+                <span className="text-blue-400 font-semibold">
+                  {" "}
+                  ({initialTemp} °C)
+                </span>
               </li>
               <li>
                 <strong>k</strong>: Konstanta pendinginan
@@ -121,7 +133,10 @@ export default function RumusPage() {
               </li>
               <li>
                 <strong>t</strong>: Waktu berjalan
-                <span className="text-blue-400 font-semibold"> ({time} detik)</span>
+                <span className="text-blue-400 font-semibold">
+                  {" "}
+                  ({time} detik)
+                </span>
               </li>
             </ul>
           </div>
