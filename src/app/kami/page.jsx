@@ -49,41 +49,57 @@ const anggota = [
 
 export default function KamiPage() {
   return (
-    <div className="min-h-screen bg-black py-25 px-5">
-      <h1 className="text-4xl font-bold text-center text-white mb-10">
-        Tim Kami
-      </h1>
+
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        key="/background_vid.mp4"
+      >
+        <source src="/background_vid.mp4" type="video/mp4" />
+      </video>
+      
+      <div className="fixed top-0 left-0 w-full h-full bg-black/60 z-1 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-black/50 z-1"></div>
+
+      <div className="relative z-10 min-h-screen py-25 px-5">
+        <h1 className="text-4xl font-bold text-center text-white mb-10 drop-shadow-lg">
+          Tim Kami
+        </h1>
 
       <div className="grid md:grid-cols-3 gap-8">
         {anggota.map((item, index) => (
           <div
-            key={index}
-            className="bg-gray-900 rounded-2xl shadow-lg p-5 text-center hover:shadow-2xl transform hover:scale-105 transition duration-300"
-          >
-            <div className="w-50 h-50 mx-auto mb-4 relative overflow-hidden rounded-2xl group">
-              <Image
-                src={item.foto}
-                alt={item.nama}
-                fill
-                className="object-cover object-top transition duration-300 group-hover:scale-110"
-              />
-            </div>
+          key={index}
+          className="bg-gray-900/40 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-5 text-center hover:bg-gray-900/60 transition-all duration-300 transform hover:scale-105 group"
+        >
+      <div className="w-50 h-50 mx-auto mb-4 relative overflow-hidden rounded-2xl">
+        <Image
+          src={item.foto}
+          alt={item.nama}
+          fill
+          className="object-cover object-top transition duration-300 group-hover:scale-110"
+        />
+      </div>
 
-            <h2 className="text-xl bg-gray-800 rounded-2xl font-semi bold">
-              {item.nama}
-            </h2>
-            <p className="text-white-500 bg-gray-800 rounded-2xl font-semi bold mt-2">
-              {item.nim}
-            </p>
+      <h2 className="text-xl font-bold text-white mb-1">
+        {item.nama}
+      </h2>
+  
+      <p className="text-blue-400 font-mono text-sm mb-3">
+        {item.nim}
+      </p>
 
-            <p className="font-semi bold text-blue-800">{item.peran}</p>
-
-            <p className="text-sm text-gray-400 rounded-2xl bg-gray-800 mt-2">
-              {item.deskripsi}
-            </p>
-          </div>
+        <p className="text-sm text-gray-200 leading-relaxed">
+          {item.deskripsi}
+        </p>
+      </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

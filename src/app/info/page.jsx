@@ -7,8 +7,6 @@ import {
   FaLightbulb,
   FaFan,
 } from "react-icons/fa6";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 
 // Konfigurasi Font Poppins
 const poppins = Poppins({
@@ -17,69 +15,23 @@ const poppins = Poppins({
 });
 
 export default function MoreInfo() {
-  const [init, setInit] = useState(false);
-
-  // Inisialisasi engine particles
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
   return (
+      
     <div
       className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden pt-20`}
     >
-      {/* Background Gradient CSS Tambahan di belakang Particles */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-[#0a0a0a] to-black z-0 pointer-events-none"></div>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="fixed top-0 left-0 w-full h-full object-cover z-0"
+    >
+      <source src="/background_vid.mp4" type="video/mp4" />
+    </video>
 
-      {/* Background Animasi Graf Partikel (Tidak Interaktif) */}
-      {init && (
-        <Particles
-          id="tsparticles"
-          className="absolute inset-0 z-0 pointer-events-none"
-          options={{
-            background: {
-              color: { value: "transparent" },
-            },
-            fpsLimit: 60,
-            interactivity: {
-              events: {
-                onHover: { enable: false },
-              },
-            },
-            particles: {
-              color: { value: "#ffffff" },
-              links: {
-                color: "#ffffff",
-                distance: 150,
-                enable: true,
-                opacity: 0.25,
-                width: 1,
-              },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: { default: "bounce" },
-                random: false,
-                speed: 1,
-                straight: false,
-              },
-              number: {
-                density: { enable: true, area: 800 },
-                value: 200,
-              },
-              opacity: { value: 0.15 }, // Opacity partikel diturunkan sedikit agar tidak mengganggu kotak gelap
-              shape: { type: "circle" },
-              size: { value: { min: 1, max: 2 } },
-            },
-            detectRetina: true,
-          }}
-        />
-      )}
-
+    <div className="fixed top-0 left-0 w-full h-full bg-black/60 z-1 pointer-events-none"></div>
+    
       {/* Wrapper Konten Utama */}
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Header */}
