@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 import {
   FaTemperatureThreeQuarters,
   FaLightbulb,
   FaFan,
 } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 // Konfigurasi Font Poppins
 const poppins = Poppins({
@@ -31,18 +31,30 @@ export default function MoreInfo() {
     </video>
 
     <div className="fixed top-0 left-0 w-full h-full bg-black/60 z-1 pointer-events-none"></div>
-    
+
       {/* Wrapper Konten Utama */}
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Header */}
-        <header className="text-center mb-16">
+        <motion.header 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h1 className="text-3xl md:text-[2.5rem] font-bold text-white tracking-tight drop-shadow-md">
             More Info About Website
           </h1>
-        </header>
+        </motion.header>
 
         {/* Main Container / Grid */}
-        <main className="group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]">
+        <motion.main 
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }} // Muncul sedikit setelah judul
+  className="group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]"
+>
+  {/* Semua isi kotak kartu tetap di sini */}
+
           {/* Kotak 1: Tentang Website */}
           <div className="group/card relative overflow-hidden bg-[#161618] rounded-[24px] px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-[4px] group-hover:opacity-40 group-hover:scale-[0.98] hover:!blur-none hover:!opacity-100 hover:!scale-105 hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center z-0 hover:z-20 cursor-pointer">
             {/* Animasi Latar Turun 1/4 (Cahaya Biru Neon) */}
@@ -119,7 +131,7 @@ export default function MoreInfo() {
               <li>Memberikan gambaran tentang proses pendinginan perangkat</li>
             </ul>
           </div>
-        </main>
+        </motion.main>
       </div>
     </div>
   );

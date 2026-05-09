@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const getTempColor = (temp) => {
   const ratio = Math.max(0, Math.min(1, (temp - 25) / 75));
@@ -78,7 +79,12 @@ export default function RumusPage() {
       <div className="relative z-10 flex flex-col lg:flex-row gap-8 max-w-6xl w-full px-4 items-start">
   
       {/* SISI KIRI: INPUT PANEL (Vertical) */}
-      <aside className="w-full lg:w-1/3 flex flex-col gap-6 bg-neutral-950/40 backdrop-blur-xl p-6 rounded-3xl border border-white/10 shadow-2xl">
+      <motion.aside 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full lg:w-1/3 flex flex-col gap-6 bg-neutral-950/40 backdrop-blur-xl p-6 rounded-3xl border border-white/10 shadow-2xl"
+      >
         <h2 className="text-xl font-bold text-blue-400 mb-2 px-2">Kontrol Suhu</h2>
         
         {/* Input Suhu Awal */}
@@ -138,9 +144,14 @@ export default function RumusPage() {
                 />
               </div>
           </div>
-  </aside>
+  </motion.aside>
 
-  <main className="w-full lg:w-2/3 flex flex-col gap-6">
+  <motion.main 
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="w-full lg:w-2/3 flex flex-col gap-6"
+  >
     <div className="bg-neutral-950/40 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border border-white/10">
       <h1 className="text-3xl font-bold mb-8 text-center text-blue-400">
         Simulasi Pendinginan Perangkat
@@ -214,7 +225,7 @@ export default function RumusPage() {
           </div>
         </div>
         </div>
-        </main>
+        </motion.main>
       </div>
     </div>
   );
