@@ -26,21 +26,24 @@ const getAmbientColor = (temp) => {
 export default function RumusPage() {
   const [time, setTime] = useState(0);
   const [currentTemp, setCurrentTemp] = useState(0);
-
+  const [isPlaying, setIsPlaying] = useState(true);
   const [initialTemp, setInitialTemp] = useState(80);
   const [ambientTemp, setAmbientTemp] = useState(30);
   const [k, setK] = useState(0.1);
 
+  useEffect(() => {
+    let timer;
+    if (isPlaying) {
+      timer = setInterval(() => {
+        setTime((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isPlaying]);
+
   const calculateTemp = (t) => {
     return ambientTemp + (initialTemp - ambientTemp) * Math.exp(-k * t);
   };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     setCurrentTemp(calculateTemp(time));
@@ -57,7 +60,7 @@ export default function RumusPage() {
       : currentTemp > 40
         ? "bg-yellow-400"
         : "bg-blue-400";
-
+        
   return (
     <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center py-10 px-4 pt-20 text-white">
 
@@ -78,7 +81,6 @@ export default function RumusPage() {
       {/* --- KONTEN UTAMA --- */}
       <div className="relative z-10 flex flex-col lg:flex-row gap-8 max-w-6xl w-full px-4 items-start">
   
-      {/* SISI KIRI: INPUT PANEL (Vertical) */}
       <motion.aside 
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -106,8 +108,8 @@ export default function RumusPage() {
         </div>
         </div>
 
-          {/* Input Suhu Ruangan */}
-          <div className="bg-black/30 p-4 rounded-2xl border border-white/5 hover:border-green-500/40 transition-all duration-300">
+        {/* Input Suhu Ruangan */}
+        <div className="bg-black/30 p-4 rounded-2xl border border-white/5 hover:border-green-500/40 transition-all duration-300">
             <div className="bg-black/30 p-4 rounded-lg border border-white/5">
           <label className="block text-xs mb-2 text-blue-100 font-bold tracking-wider">
             SUHU RUANGAN:{" "} <span className="font-mono text-sm" style={{ color: getAmbientColor(ambientTemp) }}>
@@ -127,10 +129,10 @@ export default function RumusPage() {
             className="w-full h-1.5 cursor-pointer bg-white/10 rounded-sm appearance-none"
           />
         </div>
-          </div>
+        </div>
 
-          {/* Input Konstanta */}
-          <div className="bg-black/30 p-4 rounded-2xl border border-white/5 hover:border-purple-500/40 transition-all duration-300">
+        {/* Input Konstanta */}
+        <div className="bg-black/30 p-4 rounded-2xl border border-white/5 hover:border-purple-500/40 transition-all duration-300">
             <div className="bg-black/30 p-4 rounded-lg border border-white/5">
                 <label className="block text-xs mb-2 text-blue-100 font-bold tracking-wider">
                   KONSTANTA (k): <span className="font-mono text-sm">{k.toFixed(2)}</span>
@@ -142,8 +144,26 @@ export default function RumusPage() {
                   value={k}
                   onChange={(e) => { setK(Number(e.target.value)); setTime(0); }}
                 />
-              </div>
-          </div>
+        </div>
+        </div>
+      
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className={`w-full py-3 rounded-2xl font-bold transition-all duration-300 border ${
+            isPlaying 
+              ? "bg-red-500/20 border-red-500/50 text-red-400 hover:bg-red-500/40" 
+              : "bg-green-500/20 border-green-500/50 text-green-400 hover:bg-green-500/40"
+          }`}
+        >
+          {isPlaying ? "PAUSE SIMULASI" : "RESUME SIMULASI"}
+        </button>
+
+        <button
+          onClick={() => { setTime(0); setIsPlaying(false); }}
+          className="w-full py-2 rounded-2xl font-semibold bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all mt-2"
+        >
+          RESET WAKTU
+        </button>
   </motion.aside>
 
   <motion.main 
@@ -160,7 +180,7 @@ export default function RumusPage() {
         <div className="mb-8 p-6 bg-neutral-900/90 rounded-lg shadow-inner">
           <div className="flex justify-between items-center mb-3">
             <span className="font-semibold text-neutral-300">
-              Waktu: {time} detik
+              Waktu: {time} menit
             </span>
             <span className="font-bold text-2xl text-white">
               {currentTemp.toFixed(2)} °C
@@ -219,7 +239,7 @@ export default function RumusPage() {
               </li>
               <li>
                 <strong>t</strong>: Waktu berjalan
-                <span className="text-blue-400 font-semibold"> ({time} detik)</span>
+                <span className="text-blue-400 font-semibold"> ({time} menit)</span>
               </li>
             </ul>
           </div>

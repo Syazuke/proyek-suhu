@@ -142,7 +142,7 @@ const CoolingSimulator = () => {
               </div>
 
               <span className="text-sm mt-2 font-mono text-white/95 bg-white/5 px-5 py-2 rounded-full border border-white/10 shadow-inner">
-                t = {time.toFixed(1)}s
+                t = {time.toFixed(1)}m
               </span>
             </div>
           </div>
