@@ -16,26 +16,25 @@ const poppins = Poppins({
 
 export default function MoreInfo() {
   return (
-      
     <div
       className={`${poppins.className} relative min-h-screen bg-black flex flex-col items-center py-16 px-5 overflow-hidden pt-20`}
     >
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="fixed top-0 left-0 w-full h-full object-cover z-0"
-    >
-      <source src="/background_vid.mp4" type="video/mp4" />
-    </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+      >
+        <source src="/background_vid.mp4" type="video/mp4" />
+      </video>
 
-    <div className="fixed top-0 left-0 w-full h-full bg-black/60 z-1 pointer-events-none"></div>
+      <div className="fixed top-0 left-0 w-full h-full bg-black/60 z-1 pointer-events-none"></div>
 
       {/* Wrapper Konten Utama */}
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Header */}
-        <motion.header 
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -47,18 +46,18 @@ export default function MoreInfo() {
         </motion.header>
 
         {/* Main Container / Grid */}
-        <motion.main 
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.2 }} // Muncul sedikit setelah judul
-  className="group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]"
->
-  {/* Semua isi kotak kartu tetap di sini */}
+        <motion.main
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }} // Muncul sedikit setelah judul
+          className="group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-300"
+        >
+          {/* Semua isi kotak kartu tetap di sini */}
 
           {/* Kotak 1: Tentang Website */}
-          <div className="group/card relative overflow-hidden bg-[#161618] rounded-[24px] px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-[4px] group-hover:opacity-40 group-hover:scale-[0.98] hover:!blur-none hover:!opacity-100 hover:!scale-105 hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center z-0 hover:z-20 cursor-pointer">
+          <div className="group/card relative overflow-hidden bg-[#161618] rounded-3xl px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-xs group-hover:opacity-40 group-hover:scale-[0.98] hover:blur-none! hover:opacity-100! hover:scale-105! hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center z-0 hover:z-20 cursor-pointer">
             {/* Animasi Latar Turun 1/4 (Cahaya Biru Neon) */}
-            <div className="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-[40%] bg-linear-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
 
             {/* Watermark Ikon */}
             <FaTemperatureThreeQuarters className="absolute -bottom-6 -right-6 text-9xl text-sky-500 opacity-[0.03] rotate-12 transition-transform duration-700 group-hover/card:rotate-0 group-hover/card:scale-110 z-0 pointer-events-none" />
@@ -81,9 +80,9 @@ export default function MoreInfo() {
           </div>
 
           {/* Kotak 2: Tujuan Website */}
-          <div className="group/card relative overflow-hidden bg-[#161618] rounded-[24px] px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-[4px] group-hover:opacity-40 group-hover:scale-[0.98] hover:!blur-none hover:!opacity-100 hover:!scale-105 hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center z-0 hover:z-20 cursor-pointer">
+          <div className="group/card relative overflow-hidden bg-[#161618] rounded-3xl px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-xs group-hover:opacity-40 group-hover:scale-[0.98] hover:blur-none! hover:opacity-100! hover:scale-105! hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center z-0 hover:z-20 cursor-pointer">
             {/* Animasi Latar Turun 1/4 (Cahaya Biru Neon) */}
-            <div className="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-[40%] bg-linear-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
 
             {/* Watermark Ikon */}
             <FaLightbulb className="absolute -bottom-6 -right-6 text-9xl text-sky-500 opacity-[0.03] rotate-12 transition-transform duration-700 group-hover/card:rotate-0 group-hover/card:scale-110 z-0 pointer-events-none" />
@@ -106,9 +105,9 @@ export default function MoreInfo() {
           </div>
 
           {/* Kotak 3: Kegunaan Website */}
-          <div className="group/card relative overflow-hidden bg-[#161618] rounded-[24px] px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-[4px] group-hover:opacity-40 group-hover:scale-[0.98] hover:!blur-none hover:!opacity-100 hover:!scale-105 hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center md:col-span-2 lg:col-span-1 md:max-w-[50%] lg:max-w-none md:mx-auto w-full z-0 hover:z-20 cursor-pointer">
+          <div className="group/card relative overflow-hidden bg-[#161618] rounded-3xl px-8 py-10 shadow-2xl border border-[#2d2d2d] transition-all duration-500 ease-out group-hover:blur-xs group-hover:opacity-40 group-hover:scale-[0.98] hover:blur-none! hover:opacity-100! hover:scale-105! hover:-translate-y-2 hover:border-sky-500/50 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] flex flex-col items-center text-center md:col-span-2 lg:col-span-1 md:max-w-[50%] lg:max-w-none md:mx-auto w-full z-0 hover:z-20 cursor-pointer">
             {/* Animasi Latar Turun 1/4 (Cahaya Biru Neon) */}
-            <div className="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-[40%] bg-linear-to-b from-sky-500/20 via-sky-500/5 to-transparent transform -translate-y-full group-hover/card:translate-y-0 transition-transform duration-700 ease-out z-0 pointer-events-none"></div>
 
             {/* Watermark Ikon */}
             <FaFan className="absolute -bottom-6 -right-4 text-9xl text-sky-500 opacity-[0.03] rotate-12 transition-transform duration-700 group-hover/card:rotate-0 group-hover/card:scale-110 z-0 pointer-events-none" />
