@@ -27,7 +27,7 @@ const Navigation = () => {
               <span>Perangkat</span>
             </div>
           </a>
-          <div className="hidden md:flex flex-1 justify-between max-w-xs">
+          <div className="hidden md:flex flex-1 justify-between max-w-xs md:text-lg">
             <a
               href="/"
               className="py-2 hover:text-hover transition-all duration-500"
@@ -70,7 +70,7 @@ const Navigation = () => {
 
         {isOpen && (
           <div
-            className={`absolute top-full left-0 w-full text-white bg-transparent flex flex-col py-6 px-4 shadow-lg z-50 ${isOpen ? "border-b border-(--divider)" : ""} `}
+            className={`absolute top-full left-0 w-full text-white bg-transparent md:text-lg flex flex-col py-6 px-4 shadow-lg z-50 ${isOpen ? "border-b border-(--divider)" : ""} `}
           >
             <a
               href="/"

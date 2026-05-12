@@ -104,6 +104,7 @@ const CoolingSimulator = () => {
       >
         <source src="/background_vid.mp4" type="video/mp4" />
       </video>
+      <div className="fixed top-0 left-0 w-full h-full bg-black/40 z-1 pointer-events-none"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -111,6 +112,7 @@ const CoolingSimulator = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative z-20 text-white min-h-screen flex flex-col items-center pb-16 pt-10"
       >
+        
         <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-4 text-white pt-10 pb-2 text-center drop-shadow-xl">
           VISUALISASI PENDINGINAN PERANGKAT
         </h1>
@@ -229,8 +231,9 @@ const CoolingSimulator = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl bg-white/5 backdrop-blur-lg p-3 rounded-xl border border-white/10 shadow-2xl">
           <div className="bg-black/30 p-4 rounded-lg border border-transparent hover:border-purple-500/40 transition-all duration-300">
             <label className="block text-sm mb-2 text-blue-100 font-bold tracking-wider">
-              SUHU AWAL (T0):{" "}
-              <span className="font-mono text-sm">{initialTemp}°C</span>
+              SUHU AWAL (T0):{" "} <span className="font-mono text-sm transition-colors duration-300" style={{ color: getTempColor(initialTemp) }} >
+                {initialTemp}°C
+              </span>
             </label>
             <input
               type="range"
@@ -246,8 +249,9 @@ const CoolingSimulator = () => {
           {/* Input Suhu Ruang */}
           <div className="bg-black/30 p-4 rounded-lg border border-transparent hover:border-purple-500/40 transition-all duration-300">
             <label className="block text-sm mb-2 text-blue-100 font-bold tracking-wider">
-              SUHU RUANGAN:{" "}
-              <span className="font-mono text-sm">{ambientTemp}°C</span>
+              SUHU RUANGAN:{" "} <span className="font-mono text-sm" style={{ color: getAmbientColor(ambientTemp) }}>
+              {ambientTemp}°C
+            </span>
             </label>
             <input
               type="range"
