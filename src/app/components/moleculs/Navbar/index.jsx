@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { usePathname } from "next/navigation";
-import Logo from "../../../../../public/Logo.png";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import Logo from "../../../../../public/Logo.png";
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const pathname = usePathname();
   if (pathname.endsWith("/")) {
     return null;
   }
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="bg-transparent text-white top-0 z-50 absolute w-full">
@@ -62,7 +63,7 @@ const Navigation = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-2xl focus:outline-none md:hidden inline"
+            className="text-2xl focus:outline-none md:hidden"
           >
             <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"}`}></i>
           </button>

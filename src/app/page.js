@@ -38,8 +38,8 @@ export default function Home() {
 
   const handleNameSubmit = (e) => {
     e.preventDefault();
-    if (usernameInput.trim() !== "") {
-      const name = usernameInput.trim();
+    if (usernameInput.trim() != "") {
+      const name = usernameInput;
       setUsername(name);
       setIsShowPopup(false);
       localStorage.setItem("simulasi_username", name);
